@@ -98,7 +98,7 @@ const About = () => {
               <h2 className="text-3xl">Our Journey</h2>
             </div>
             <p className="text-slate-600 text-lg leading-relaxed mb-6">
-              Established in 1998 as Uniplan Systems (Nig) Limited, we have evolved into a multi-faceted consulting firm. Over the decades, we have pride ourselves on our deep understanding of local and global market dynamics.
+              Established in 1998 as Uniplan Systems (Nig) Limited, we have evolved into a multi-faceted consulting firm: Uniplan Integrated Services Limited (in year 2012). Over the decades, we have pride ourselves on our deep understanding of local and global market dynamics.
             </p>
             <p className="text-slate-600 text-lg leading-relaxed">
               This expertise allows us to offer customized services that meet the unique needs of our diverse clientele, ranging from academic institutions to top-tier financial organizations.
