@@ -4,6 +4,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
+import fs from "fs";
 
 dotenv.config();
 
@@ -29,42 +30,12 @@ async function startServer() {
       // Do not fail on invalid certs (common for shared hosting)
       rejectUnauthorized: false
     },
-    connectionTimeout: 15000, // 15 seconds
-    greetingTimeout: 15000,   // 15 seconds
-    socketTimeout: 15000,     // 15 seconds
-    debug: true,              // Enable debug output
-    logger: true              // Log to console
+    connectionTimeout: 5000, // 5 seconds
+    greetingTimeout: 5000,   // 5 seconds
+    socketTimeout: 5000,     // 5 seconds
+    debug: true,             // Enable debug output
+    logger: true             // Log to console
   });
-
-  // Verify transporter on startup
-  if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-    const host = process.env.EMAIL_HOST || 'smtp.gmail.com';
-    const port = process.env.EMAIL_PORT || '465';
-    const secure = process.env.EMAIL_SECURE !== 'false';
-    
-    console.log(`🚀 Attempting SMTP verification:`);
-    console.log(`   Host: ${host}`);
-    console.log(`   Port: ${port}`);
-    console.log(`   Secure: ${secure}`);
-    console.log(`   User: ${process.env.EMAIL_USER}`);
-
-    transporter.verify((error, success) => {
-      if (error) {
-        console.error("❌ SMTP Verification Failed:");
-        console.error("Error Code:", (error as any).code);
-        console.error("Error Message:", error.message);
-        if ((error as any).command) console.error("Command:", (error as any).command);
-        if ((error as any).response) console.error("Response:", (error as any).response);
-        
-        console.error("👉 Troubleshooting for Namecheap:");
-        console.error("- If Port is 465, EMAIL_SECURE must be 'true'");
-        console.error("- If Port is 587, EMAIL_SECURE must be 'false'");
-        console.error("- If both timeout, try host 'mail.privateemail.com' vs 'mail.yourdomain.com'");
-      } else {
-        console.log("✅ SMTP Server is ready to take our messages");
-      }
-    });
-  }
 
   // API Route for Contact Form
   app.post("/api/contact", async (req, res) => {
@@ -76,7 +47,7 @@ async function startServer() {
     console.log(`Subject: ${subject}`);
     console.log(`Message: ${message}`);
 
-    // Send Email Notification
+    // Send Email Notification in background (non-blocking)
     if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
       const mailOptions = {
         from: process.env.EMAIL_USER,
@@ -112,24 +83,18 @@ async function startServer() {
         `
       };
 
-      try {
-        await transporter.sendMail(mailOptions);
+      // We don't 'await' this so the API responds immediately
+      transporter.sendMail(mailOptions).then(() => {
         console.log("Email notification sent successfully.");
-      } catch (error: any) {
+      }).catch((error: any) => {
         if (error.message && error.message.includes('534-5.7.9')) {
           console.error("❌ GMAIL ERROR: You must use an 'App Password' instead of your regular password.");
-          console.error("👉 Fix: Go to Google Account > Security > App Passwords and generate a 16-character code.");
         } else if (error.code === 'ETIMEDOUT' || error.message.includes('timeout')) {
           console.error("❌ EMAIL TIMEOUT: The connection to the SMTP server timed out.");
-          console.error("👉 Troubleshooting:");
-          console.error("1. If using port 465, set EMAIL_SECURE=true.");
-          console.error("2. If using port 587, set EMAIL_SECURE=false.");
-          console.error("3. If port 465 is timing out, try port 587 with EMAIL_SECURE=false.");
-          console.error("4. Verify your EMAIL_HOST (e.g., 'mail.privateemail.com' for Namecheap).");
         } else {
           console.error("Error sending email notification:", error);
         }
-      }
+      });
     } else {
       console.warn("Email credentials not found. Skipping email notification.");
     }
@@ -147,6 +112,22 @@ async function startServer() {
       appType: "spa",
     });
     app.use(vite.middlewares);
+
+    // Explicit SPA fallback for development
+    app.get('*', async (req, res, next) => {
+      const url = req.originalUrl;
+      try {
+        let template = fs.readFileSync(
+          path.resolve(__dirname, 'index.html'),
+          'utf-8'
+        );
+        template = await vite.transformIndexHtml(url, template);
+        res.status(200).set({ 'Content-Type': 'text/html' }).end(template);
+      } catch (e) {
+        vite.ssrFixStacktrace(e as Error);
+        next(e);
+      }
+    });
   } else {
     const distPath = path.join(process.cwd(), 'dist');
     app.use(express.static(distPath));

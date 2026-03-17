@@ -12,6 +12,7 @@ import Contact from './pages/Contact';
 import CEOProfile from './pages/CEOProfile';
 import Team from './pages/Team';
 import Admin from './pages/Admin';
+import Maintenance from './pages/Maintenance';
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -23,6 +24,14 @@ const ScrollToTop = () => {
 };
 
 export default function App() {
+  // Set this to true to enable maintenance mode manually, 
+  // or use the environment variable VITE_MAINTENANCE_MODE=true
+  const isMaintenanceMode = import.meta.env.VITE_MAINTENANCE_MODE === 'true';
+
+  if (isMaintenanceMode) {
+    return <Maintenance />;
+  }
+
   return (
     <Router>
       <ScrollToTop />
