@@ -29,8 +29,14 @@ const Team = () => {
       bio: 'Bridging the gap between client needs and organizational solutions with excellence.'
     },
     {
+      name: 'Kuteyi Oluwaloye Vincent',
+      role: 'Web Developer',
+      image: 'https://i.postimg.cc/VkfZs3S0/Kuteyi_Oluwaloye_Vincent.png',
+      bio: 'Full-stack developer building robust, scalable, and high-performance web applications.'
+    },
+    {
       name: 'Olujobi Olayiwola',
-      role: 'Web Designer / UI/UX',
+      role: 'UI/UX',
       image: 'https://i.postimg.cc/4Nzjx6WZ/Olujobi_Olayiwola.png',
       bio: 'Designing intuitive and aesthetically pleasing digital experiences.'
     },
@@ -39,12 +45,6 @@ const Team = () => {
       role: 'Marketing',
       image: 'https://i.postimg.cc/SNWHx6gk/Oderinlo_Oyindamola.png',
       bio: 'Strategic marketer focused on growth, brand awareness, and market penetration.'
-    },
-    {
-      name: 'Kuteyi Oluwaloye Vincent',
-      role: 'Web Developer',
-      image: 'https://i.postimg.cc/VkfZs3S0/Kuteyi_Oluwaloye_Vincent.png',
-      bio: 'Full-stack developer building robust, scalable, and high-performance web applications.'
     }
   ];
 
