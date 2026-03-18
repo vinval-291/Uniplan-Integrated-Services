@@ -40,15 +40,15 @@ const Services = () => {
                     <ul className="space-y-3 text-sm text-slate-700">
                       <li className="flex items-start gap-2">
                         <CheckCircle2 size={18} className="text-brand-secondary shrink-0 mt-0.5" />
-                        <span><strong>1-5 candidates:</strong> N10,000 per candidate (inclusive of placement within 3 months)</span>
+                        <span><strong>1-5 candidates:</strong> N20,000 per candidate (inclusive of replacement within 3 months)</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 size={18} className="text-brand-secondary shrink-0 mt-0.5" />
-                        <span><strong>6-10 candidates:</strong> N7,000 per candidate (inclusive of placement within 3 months)</span>
+                        <span><strong>6-10 candidates:</strong> N15,000 per candidate (inclusive of replacement within 3 months)</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 size={18} className="text-brand-secondary shrink-0 mt-0.5" />
-                        <span><strong>Above 10 candidates:</strong> N5,000 per candidate (inclusive of placement within 3 months)</span>
+                        <span><strong>Above 10 candidates:</strong> N10,000 per candidate (inclusive of replacement within 3 months)</span>
                       </li>
                     </ul>
                   </div>
@@ -56,7 +56,7 @@ const Services = () => {
 
                 {service.id === 'vocational' && (
                   <div className="grid grid-cols-2 gap-4">
-                    {['Resin Art', 'Tye and Dye', 'Catering', 'Cosmetology', 'Fashion Design', 'Computer Skills', 'Barbing'].map((item) => (
+                    {['Public Speaking', 'Resin Art', 'Tye and Dye', 'Catering', 'Cosmetology', 'Fashion Design', 'Computer Skills', 'Barbing'].map((item) => (
                       <div key={item} className="flex items-center gap-2 text-slate-700">
                         <CheckCircle2 size={16} className="text-brand-primary" />
                         <span className="text-sm font-medium">{item}</span>

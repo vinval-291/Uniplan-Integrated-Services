@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin, Twitter, Music } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -19,9 +19,11 @@ const Footer = () => {
             Empowering Businesses Through Strategic Consulting, HR Solutions, and Professional Training.
           </p>
           <div className="flex gap-4">
-            <a href="https://facebook.com/uniplanintegrated" target="_blank" rel="noopener noreferrer" className="hover:text-brand-secondary transition-colors"><Facebook size={20} /></a>
-            <a href="https://instagram.com/uniplanintegrated" target="_blank" rel="noopener noreferrer" className="hover:text-brand-secondary transition-colors"><Instagram size={20} /></a>
-            <a href="https://linkedin.com/company/uniplan-integrated-services" target="_blank" rel="noopener noreferrer" className="hover:text-brand-secondary transition-colors"><Linkedin size={20} /></a>
+            <a href="https://facebook.com/uniplanintegrated" target="_blank" rel="noopener noreferrer" className="hover:text-brand-secondary transition-colors" title="Facebook"><Facebook size={20} /></a>
+            <a href="https://instagram.com/uniplanintegratedservices" target="_blank" rel="noopener noreferrer" className="hover:text-brand-secondary transition-colors" title="Instagram"><Instagram size={20} /></a>
+            <a href="https://x.com/Uniplan_ltd" target="_blank" rel="noopener noreferrer" className="hover:text-brand-secondary transition-colors" title="X (Twitter)"><Twitter size={20} /></a>
+            <a href="https://tiktok.com/@uniplanintegratedservices" target="_blank" rel="noopener noreferrer" className="hover:text-brand-secondary transition-colors" title="TikTok"><Music size={20} /></a>
+            <a href="https://linkedin.com/company/uniplan-integrated-services" target="_blank" rel="noopener noreferrer" className="hover:text-brand-secondary transition-colors" title="LinkedIn"><Linkedin size={20} /></a>
           </div>
         </div>
 
@@ -40,6 +42,7 @@ const Footer = () => {
           <h4 className="text-white font-bold mb-6">Services</h4>
           <ul className="space-y-4 text-sm">
             <li><Link to="/services" className="hover:text-brand-secondary">Recruitment</Link></li>
+            <li><Link to="/services" className="hover:text-brand-secondary">Educational Consult</Link></li>
             <li><Link to="/services" className="hover:text-brand-secondary">Outsourcing</Link></li>
             <li><Link to="/services" className="hover:text-brand-secondary">Management Consulting</Link></li>
             <li><Link to="/services" className="hover:text-brand-secondary">Vocational Training</Link></li>
@@ -75,7 +78,7 @@ const Footer = () => {
         <p className="text-slate-500">
           This website is created by{' '}
           <a 
-            href="https://linkedin.com" 
+            href="https://linkedin.com/in/kuteyi-oluwaloye-vincent" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="text-brand-primary hover:text-brand-secondary transition-colors font-medium"

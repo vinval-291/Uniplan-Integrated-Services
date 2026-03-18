@@ -29,10 +29,13 @@ const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const heroTimer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
     }, 5000);
-    return () => clearInterval(timer);
+
+    return () => {
+      clearInterval(heroTimer);
+    };
   }, []);
 
   return (
@@ -140,7 +143,7 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SERVICES.map((service, index) => (
+            {SERVICES.slice(0, 6).map((service, index) => (
               <motion.div
                 key={service.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -169,6 +172,12 @@ const Home = () => {
                 </Link>
               </motion.div>
             ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <Link to="/services" className="btn-primary inline-flex items-center gap-2">
+              View All Services <ArrowRight size={18} />
+            </Link>
           </div>
         </div>
       </section>
@@ -229,20 +238,20 @@ const Home = () => {
             <h2 className="text-4xl mb-6">What Our Clients Say</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {TESTIMONIALS.map((testimonial, index) => (
               <motion.div
                 key={testimonial.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col h-full"
+                className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col h-full hover:shadow-md transition-shadow"
               >
                 <div className="flex items-center gap-4 mb-6">
                   <img 
                     src={testimonial.logo} 
-                    alt={testimonial.company} 
+                    alt={testimonial.name} 
                     className="w-12 h-12 rounded-full object-cover border border-slate-100"
                     referrerPolicy="no-referrer"
                   />

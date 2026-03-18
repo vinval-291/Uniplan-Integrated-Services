@@ -15,6 +15,8 @@ async function startServer() {
   const app = express();
   const PORT = 3000;
 
+  console.log(`🛠️ Starting server in ${process.env.NODE_ENV || 'development'} mode`);
+
   app.use(express.json());
 
   // Email Transporter Setup
@@ -115,23 +117,40 @@ async function startServer() {
 
     // Explicit SPA fallback for development
     app.get('*', async (req, res, next) => {
-      const url = req.originalUrl;
+      // Skip API routes
+      if (req.originalUrl.startsWith('/api/')) {
+        return next();
+      }
+
+      console.log(`🌐 SPA Fallback (Dev): ${req.originalUrl}`);
       try {
-        let template = fs.readFileSync(
-          path.resolve(__dirname, 'index.html'),
-          'utf-8'
-        );
-        template = await vite.transformIndexHtml(url, template);
+        const indexPath = path.resolve(process.cwd(), 'index.html');
+        if (!fs.existsSync(indexPath)) {
+          console.error(`❌ index.html not found at ${indexPath}`);
+          return next();
+        }
+
+        let template = fs.readFileSync(indexPath, 'utf-8');
+        template = await vite.transformIndexHtml(req.originalUrl, template);
         res.status(200).set({ 'Content-Type': 'text/html' }).end(template);
       } catch (e) {
+        console.error(`❌ SPA Fallback Error:`, e);
         vite.ssrFixStacktrace(e as Error);
         next(e);
       }
     });
   } else {
     const distPath = path.join(process.cwd(), 'dist');
+    console.log(`📦 Serving production build from ${distPath}`);
+    
     app.use(express.static(distPath));
     app.get('*', (req, res) => {
+      // Skip API routes
+      if (req.originalUrl.startsWith('/api/')) {
+        return res.status(404).json({ error: 'API route not found' });
+      }
+      
+      console.log(`🌐 SPA Fallback (Prod): ${req.originalUrl}`);
       res.sendFile(path.join(distPath, 'index.html'));
     });
   }

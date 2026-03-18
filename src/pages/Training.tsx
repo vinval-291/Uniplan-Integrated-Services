@@ -1,19 +1,10 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { GraduationCap, Award, BookOpen, CheckCircle2 } from 'lucide-react';
-import { TRAINING_PROGRAMS } from '../constants';
+import { TRAINING_PROGRAMS, COURSES } from '../constants';
 
 const Training = () => {
-  const certifications = [
-    'Human Resource Management',
-    'Customer Care',
-    'Project Management',
-    'Health, Safety, and Environment (HSE)',
-    'Digital Marketing',
-    'Transport and Logistics',
-    'Public Speaking',
-    'Negotiation Techniques'
-  ];
+  const certifications = COURSES.map(course => course.title);
 
   return (
     <div className="pt-24">

@@ -36,14 +36,22 @@ export const SERVICES = [
     description: 'Providing skilled manpower to enhance business operations, allowing clients to focus on core functions.',
     icon: Briefcase,
     link: '/services#outsourcing',
-    image: 'https://images.unsplash.com/photo-1522071823992-b48e17395402?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.unsplash.com/photo-1768796371784-3ad0bf2723a0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
-    id: 'consulting',
+    id: 'educational-consulting',
+    title: 'Educational Consulting',
+    description: 'Expert on educational advice. Degree conversion courses.',
+    icon: ShieldCheck,
+    link: '/services#educational-consulting',
+    image: 'https://images.unsplash.com/photo-1622555063306-9930f396f051?q=80&w=765&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    id: 'management-consulting',
     title: 'Management Consulting',
     description: 'Expert advice on business strategy, operations, and organizational growth.',
     icon: Lightbulb,
-    link: '/services#consulting',
+    link: '/services#management-consulting',
     image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800'
   },
   {
@@ -133,6 +141,51 @@ export const COURSES = [
     description: 'Ensure workplace safety and environmental compliance.',
     image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&q=80&w=400',
     details: 'Understand occupational health standards, hazard identification, risk control, and environmental regulations. This course is essential for safety officers and managers looking to implement robust safety management systems.'
+  },
+  {
+    id: 'customer-care',
+    title: 'Customer Care & Service Excellence',
+    category: 'Professional',
+    duration: '4 Weeks',
+    description: 'Master the art of delivering exceptional customer experiences.',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=400',
+    details: 'Learn effective communication, conflict resolution, and relationship management. This course focuses on building customer loyalty and handling difficult situations with professionalism.'
+  },
+  {
+    id: 'transport-logistics',
+    title: 'Transport and Logistics Management',
+    category: 'Management',
+    duration: '8 Weeks',
+    description: 'Optimize supply chain and transportation operations.',
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=400',
+    details: 'Covering fleet management, supply chain optimization, international shipping, and warehouse operations. Ideal for professionals looking to streamline logistics processes.'
+  },
+  {
+    id: 'public-speaking',
+    title: 'Public Speaking & Effective Communication',
+    category: 'Professional',
+    duration: '6 Weeks',
+    description: 'Build confidence and master the art of persuasive speaking.',
+    image: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&q=80&w=400',
+    details: 'Learn to structure speeches, use body language effectively, and engage any audience. Perfect for leaders, managers, and anyone looking to improve their presentation skills.'
+  },
+  {
+    id: 'quality-control',
+    title: 'Quality Control and Assurance',
+    category: 'Management',
+    duration: '8 Weeks',
+    description: 'Implement robust quality management systems.',
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400',
+    details: 'Learn ISO standards, statistical process control, and quality auditing. This course provides the tools to ensure products and services meet or exceed customer expectations.'
+  },
+  {
+    id: 'negotiation',
+    title: 'Negotiation Techniques',
+    category: 'Professional',
+    duration: '4 Weeks',
+    description: 'Master the art of win-win negotiations.',
+    image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=400',
+    details: 'Develop strategic negotiation skills, understand psychological triggers, and learn to close deals effectively while maintaining strong professional relationships.'
   }
 ];
 
@@ -150,20 +203,41 @@ export const TESTIMONIALS = [
     name: "Olawale Adeyemi",
     company: "Ashdam Solar Limited",
     text: "Uniplan's recruitment services helped us find the perfect technical talent for our expansion. Their professional approach is unmatched.",
-    logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?auto=format&fit=crop&q=80&w=100"
+    logo: "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
   },
   {
     id: 2,
     name: "Chidinma Okoro",
     company: "Lead City University",
     text: "The professional training modules provided by Uniplan have significantly improved our staff's communication and management skills.",
-    logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?auto=format&fit=crop&q=80&w=100"
+    logo: "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
   },
   {
     id: 3,
     name: "Samuel Johnson",
     company: "New Horizons",
     text: "Strategic consulting from Uniplan gave us a fresh perspective on our operations. We've seen a 20% increase in efficiency since implementation.",
-    logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?auto=format&fit=crop&q=80&w=100"
+    logo: "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
+  },
+  {
+    id: 4,
+    name: "Bisi Akande",
+    company: "First Bank Nigeria",
+    text: "Their outsourcing solutions allowed us to focus on our core banking operations while they handled our support staff efficiently.",
+    logo: "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
+  },
+  {
+    id: 5,
+    name: "Emeka Nwosu",
+    company: "KPMG Nigeria",
+    text: "The management consulting team at Uniplan provided deep insights that helped us restructure our regional operations effectively.",
+    logo: "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
+  },
+  {
+    id: 6,
+    name: "Fatima Yusuf",
+    company: "Sterling Bank",
+    text: "We've partnered with Uniplan for several vocational training cycles, and the quality of skill acquisition is consistently high.",
+    logo: "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
   }
 ];

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Mail, Phone, MapPin, Clock, Facebook, Instagram, Linkedin, Send, CheckCircle2, Loader2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Facebook, Instagram, Linkedin, Send, CheckCircle2, Loader2, Twitter, Music } from 'lucide-react';
 import { db } from '../firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
@@ -77,7 +77,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-lg mb-1">Our Office</h4>
-                  <p className="text-slate-600">No 4 beside Akala House, Mokola, Ibadan, Oyo State.</p>
+                  <p className="text-slate-600">No 9 beside Akala House, Adegoke Street, Ore-meji, Mokola, Ibadan, Oyo State.</p>
                 </div>
               </div>
 
@@ -97,8 +97,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-lg mb-1">Email Address</h4>
-                  <p className="text-slate-600">admin@uniplanintegratedservices.com</p>
-                  <p className="text-slate-600">uniplanintegratedservicestd@gmail.com</p>
+                  <p className="text-slate-600">contact@uniplanintegratedservices.com</p>
+                  <p className="text-slate-600">uniplanintegratedservicesltd@gmail.com</p>
                 </div>
               </div>
 
@@ -117,9 +117,11 @@ const Contact = () => {
             <div className="mt-12">
               <h4 className="font-bold mb-4">Follow Us</h4>
               <div className="flex gap-4">
-                <a href="#" className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-primary hover:text-white transition-all"><Facebook size={20} /></a>
-                <a href="#" className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-primary hover:text-white transition-all"><Instagram size={20} /></a>
-                <a href="#" className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-primary hover:text-white transition-all"><Linkedin size={20} /></a>
+                <a href="https://facebook.com/uniplanintegrated" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-primary hover:text-white transition-all" title="Facebook"><Facebook size={20} /></a>
+                <a href="https://instagram.com/uniplanintegratedservices" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-primary hover:text-white transition-all" title="Instagram"><Instagram size={20} /></a>
+                <a href="https://x.com/Uniplan_ltd" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-primary hover:text-white transition-all" title="X (Twitter)"><Twitter size={20} /></a>
+                <a href="https://tiktok.com/@uniplanintegratedservices" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-primary hover:text-white transition-all" title="TikTok"><Music size={20} /></a>
+                <a href="https://linkedin.com/company/uniplan-integrated-services" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-primary hover:text-white transition-all" title="LinkedIn"><Linkedin size={20} /></a>
               </div>
             </div>
           </div>
