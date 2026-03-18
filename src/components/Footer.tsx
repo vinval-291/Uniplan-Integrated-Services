@@ -54,7 +54,7 @@ const Footer = () => {
           <ul className="space-y-4 text-sm">
             <li className="flex gap-3">
               <MapPin size={18} className="text-brand-primary shrink-0" />
-              <span>No 4 beside Akala House, Mokola, Ibadan, Oyo State</span>
+              <span>No 9 beside Akala House, Adegoke Street, Ore-meji, Mokola, Ibadan, Oyo State.</span>
             </li>
             <li className="flex gap-3">
               <Phone size={18} className="text-brand-primary shrink-0" />
